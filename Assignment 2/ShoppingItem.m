@@ -14,7 +14,7 @@
 @synthesize description = _description;
 @synthesize quantity = _quantity;
 
--(ShoppingItem *) initItem: (NSString *) name: (NSString *) description: (NSNumber *) quantity{
+-(ShoppingItem *) initItem: (NSString *) name: (NSString *) description: (NSInteger) quantity{
 	ShoppingItem *item = [[ShoppingItem alloc] init];
 	item.name = name;
 	item.description = description;

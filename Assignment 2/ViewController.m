@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "ShoppingItem.h"
 #import "ShoppingList.h"
+#import "ItemDetailsViewController.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) ShoppingList *list;
@@ -25,7 +26,7 @@
 }
 
 -(IBAction) addItem:(id)sender{
-	ShoppingItem *item = [[ShoppingItem alloc] initItem:@"New Item" :nil :0];
+	ShoppingItem *item = [[ShoppingItem alloc] initItem:@"New Item" :@"" :0];
 	[self.list addItem:item];
 	[self.tableView reloadData];
 }
@@ -85,6 +86,7 @@
 	}
 	
 	ShoppingItem *item = [self.list.list objectAtIndex:indexPath.row];
+	NSLog(@"Quantity %i", item.quantity);
 	cell.textLabel.text = item.name;
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
@@ -103,5 +105,14 @@
 #pragma mark - UITableViewDelegate implementation
 
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+	ShoppingItem *item = [self.list.list objectAtIndex:indexPath.row];
+	
+	/* UIAlertView *alert = [[UIAlertView alloc] initWithTitle:city.name message:city.description delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+	 [alert show];*/
+	
+	ItemDetailsViewController *detailsController = [[ItemDetailsViewController alloc] initWithItem:item];
+	[self.navigationController pushViewController:detailsController animated:YES];
+	[tv deselectRowAtIndexPath:indexPath animated:YES];
 }
+
 @end

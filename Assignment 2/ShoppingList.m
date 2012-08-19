@@ -14,8 +14,8 @@
 
 -(NSMutableArray *)list{
 	if(!_list){
-		ShoppingItem *tiolet_paper = [[ShoppingItem alloc] initItem: @"Toilet Paper": @"In Rolls": [NSNumber numberWithDouble:2.0]];
-		ShoppingItem *bananas = [[ShoppingItem alloc] initItem: @"Bananas": @"In Kilos": [NSNumber numberWithDouble:0.5]];
+		ShoppingItem *tiolet_paper = [[ShoppingItem alloc] initItem: @"Toilet Paper": @"In Rolls": 2];
+		ShoppingItem *bananas = [[ShoppingItem alloc] initItem: @"Bananas": @"In Kilos": 3];
 		_list = [[NSMutableArray	alloc] initWithObjects:tiolet_paper, bananas, nil];
 	}
 	return _list;

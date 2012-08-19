@@ -12,7 +12,7 @@
 
 @property (nonatomic, weak) NSString *name;
 @property (nonatomic, weak) NSString *description;
-@property (nonatomic, weak) NSNumber *quantity;
+@property NSInteger quantity;
 
--(ShoppingItem *) initItem: (NSString *) name: (NSString *) description: (NSNumber *) quantity;
+-(ShoppingItem *) initItem: (NSString *) name: (NSString *) description: (NSInteger) quantity;
 @end
