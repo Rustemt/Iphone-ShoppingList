@@ -15,5 +15,5 @@
 -(void) editItem: (NSInteger) index : (ShoppingItem *) item;
 -(void) addItem: (ShoppingItem *) item;
 -(void) deleteItem: (NSInteger) index;
-
+-(void) moveItem: (NSInteger) from: (NSInteger) to;
 @end

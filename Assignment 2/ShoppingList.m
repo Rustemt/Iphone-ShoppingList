@@ -36,4 +36,10 @@
 	origin.quantity = item.quantity;
 }
 
+-(void) moveItem: (NSInteger) from: (NSInteger) to{
+	NSString *item = [self.list objectAtIndex:from];
+	[self.list removeObject:item];
+	[self.list insertObject:item atIndex:to];
+}
+
 @end
