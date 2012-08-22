@@ -29,11 +29,10 @@
 	[self.list removeObjectAtIndex:index];
 }
 
--(void) editItem:(NSInteger)index :(ShoppingItem *)item{
-	ShoppingItem *origin = [self.list objectAtIndex:index];
-	origin.name = item.name;
-	origin.description = item.description;
-	origin.quantity = item.quantity;
+-(void) editItem:(ShoppingItem *)item: (NSString *) name: (NSString *) description: (NSInteger) quantity{
+	item.name = name;
+	item.description = description;
+	item.quantity = quantity;
 }
 
 -(void) moveItem: (NSInteger) from: (NSInteger) to{

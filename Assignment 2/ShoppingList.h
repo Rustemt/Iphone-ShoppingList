@@ -12,7 +12,7 @@
 @interface ShoppingList : NSObject
 
 @property (nonatomic, strong) NSMutableArray *list;
--(void) editItem: (NSInteger) index : (ShoppingItem *) item;
+-(void) editItem:(ShoppingItem *)item: (NSString *) name: (NSString *) description: (NSInteger) quantity;
 -(void) addItem: (ShoppingItem *) item;
 -(void) deleteItem: (NSInteger) index;
 -(void) moveItem: (NSInteger) from: (NSInteger) to;

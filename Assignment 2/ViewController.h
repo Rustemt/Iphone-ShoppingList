@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ItemDetailsViewController.h"
 
-@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, EditItemDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end

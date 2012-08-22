@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "ShoppingItem.h"
 #import "ShoppingList.h"
-#import "ItemDetailsViewController.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) ShoppingList *list;
@@ -39,6 +38,7 @@
 	self.navigationItem.leftBarButtonItem = self.editButtonItem;
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector (addItem:)];
 	self.navigationItem.rightBarButtonItem = addButton;
+	
 }
 
 - (void)viewDidUnload
@@ -86,7 +86,6 @@
 	}
 	
 	ShoppingItem *item = [self.list.list objectAtIndex:indexPath.row];
-	NSLog(@"Quantity %i", item.quantity);
 	cell.textLabel.text = item.name;
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
@@ -111,8 +110,15 @@
 	 [alert show];*/
 	
 	ItemDetailsViewController *detailsController = [[ItemDetailsViewController alloc] initWithItem:item];
+	detailsController.editDelegate = self;
 	[self.navigationController pushViewController:detailsController animated:YES];
 	[tv deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark -  EditItemDelegate implemenation
+-(void) itemEdited:(ShoppingItem *)item: (NSString *) name: (NSString *) description: (NSInteger) quantity{
+	[self.list editItem:item :name :description :quantity];
+	[self.tableView reloadData];
 }
 
 @end

@@ -9,7 +9,7 @@
 #import "ItemDetailsViewController.h"
 
 @interface ItemDetailsViewController ()
-@property (weak, nonatomic) ShoppingItem *item;
+@property (strong, nonatomic) ShoppingItem *item;
 @end
 
 @implementation ItemDetailsViewController
@@ -32,14 +32,28 @@
 	return self;
 }
 
+- (IBAction)stepperValueChanged:(id)sender {
+	quantityLabel.text = [NSString stringWithFormat:@"%i", (int)quantityStepper.value];
+}
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
 	// Do any additional setup after loading the view from its nib.
 	self.title = self.item.name;
-	nameCell.detailTextLabel.text = self.item.name;
-	descriptionCell.detailTextLabel.text = self.item.description;
-	amountCell.detailTextLabel.text = [NSString stringWithFormat:@"%i", self.item.quantity];
+	
+	nameTextField.text = self.item.name;
+	nameTextField.delegate = self;
+	
+	descriptionTextField.text = self.item.description;
+	descriptionTextField.delegate = self;
+	
+	quantityStepper.maximumValue = 100;
+	quantityStepper.minimumValue = 0;
+	quantityStepper.stepValue = 1;
+	quantityStepper.value = self.item.quantity;
+	
+	quantityLabel.text = [NSString stringWithFormat:@"%i", (int)quantityStepper.value];
 }
 
 - (void)viewDidUnload
@@ -47,6 +61,12 @@
 	[super viewDidUnload];
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
+}
+
+- (void) viewWillDisappear:(BOOL)animated{
+	if(self.editDelegate && [self.editDelegate respondsToSelector:@selector(itemEdited::::)]){
+		[self.editDelegate itemEdited:self.item: nameTextField.text: descriptionTextField.text:quantityStepper.value];
+	}
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -83,6 +103,15 @@
 	}
 	return cell;
 }
+
 #pragma mark - UITableViewDelegate implementation
+
+
+#pragma mark - UITextFieldDelegate implementation
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[textField resignFirstResponder];
+	return YES;
+}
 
 @end

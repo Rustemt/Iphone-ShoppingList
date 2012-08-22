@@ -10,8 +10,8 @@
 
 @interface ShoppingItem : NSObject
 
-@property (nonatomic, weak) NSString *name;
-@property (nonatomic, weak) NSString *description;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *description;
 @property NSInteger quantity;
 
 -(ShoppingItem *) initItem: (NSString *) name: (NSString *) description: (NSInteger) quantity;
