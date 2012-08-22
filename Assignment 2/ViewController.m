@@ -25,7 +25,7 @@
 }
 
 -(IBAction) addItem:(id)sender{
-	ShoppingItem *item = [[ShoppingItem alloc] initItem:@"New Item" :@"" :0];
+	ShoppingItem *item = [[ShoppingItem alloc] initItem:@"New Item" :nil :0];
 	[self.list addItem:item];
 	[self.tableView reloadData];
 }
