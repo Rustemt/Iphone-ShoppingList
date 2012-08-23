@@ -49,7 +49,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+	return YES;//(interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
 -(void)setEditing:(BOOL)editing animated:(BOOL) animated {
